@@ -6,6 +6,7 @@
 package ui;
 
 import entities.Customer;
+import entities.So;
 import entities.SoOfDay;
 import entities.Table;
 import java.util.ArrayList;
@@ -64,8 +65,21 @@ public class ContentMainDialog extends javax.swing.JDialog {
 
         khach = new ArrayList<Customer>();
         tables = new ArrayList<Table>();
+        initData();
     }
 
+    private void initData(){
+        for(int i=0;i<10;i++){
+            Customer c=new Customer("khach "+i, "abc"+i, i);
+            khach.add(c);
+        }
+        Table tb=new Table("11-11-2013");
+        for(int i=0;i<10;i++){
+            So s=new So(""+(i+10), i+20, khach.get(i), "11-11-2013");
+            tb.addSo(s);
+        }
+        tables.add(tb);
+    }
     private void showKetqua() {
         String ketqua = cbbKetqua.getSelectedItem().toString();
         String ngay = cbbNgay.getSelectedItem().toString();
